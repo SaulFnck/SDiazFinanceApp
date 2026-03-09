@@ -37,8 +37,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.financeapp.components.SummaryCardItem
 import com.example.financeapp.ui.theme.FinanceAppTheme
 import com.example.financeapp.ui.theme.beish
+import com.example.financeapp.models.summaryCards
+import com.example.financeapp.components.SummaryCardItem
+import com.example.financeapp.ui.theme.YellowCard
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -129,95 +133,68 @@ fun FinanceApp(innerPadding: PaddingValues){
                 .padding(15.dp)
                 .fillMaxWidth()
                 .height(275.dp)
-                //.background(Color.Blue)
         )
         {
-            //1
-            Column(
+            // Actividad card
+            SummaryCardItem(
+                cardItem = summaryCards[0],
                 modifier = Modifier
                     .weight(1f)
-                    .fillMaxHeight()
-                    //.padding(10.dp)
-                    .clip(RoundedCornerShape(15.dp))
-                    .background(Color.White),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
+                    .fillMaxSize()
             )
-            {
-                Icon(
-                    imageVector = Icons.Default.Face,
-                    contentDescription = "Actividad",
-                    modifier = Modifier.size(25.dp),
-                    tint = Color.Black
-                )
-                Text(
-                    text = "Actividad",
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.Bold,
-                )
-                Text(
-                    text = "De la semana",
-                    fontSize = 15.sp,
-                )
-            }
 
-            //2
+            //Ventas y Ganancias
             Column(
                 modifier = Modifier
                     .weight(1f)
-                    .fillMaxHeight()
+                    .fillMaxSize()
                     .padding(start = 10.dp)
             ) {
-                Column(
+                //Ventas
+                SummaryCardItem(
+                    cardItem = summaryCards[1],
                     modifier = Modifier
                         .weight(1f)
+                        .padding(bottom = 5.dp)
                         .fillMaxSize()
-                        .clip(RoundedCornerShape(15.dp))
-                        .background(Color.White),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Center
-                ) {
-                    Text(
-                        text = "Ventas",
-                        fontSize = 15.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = Color.Gray
-
-                        )
-                    Text(
-                        text = "$123",
-                        fontSize = 15.sp,
-                        fontWeight = FontWeight.ExtraBold,
-                    )
-                }
-                Column(
+                )
+                //Ganancias
+                SummaryCardItem(
+                    cardItem = summaryCards[2],
                     modifier = Modifier
                         .weight(1f)
+                        .padding(top = 5.dp)
                         .fillMaxSize()
-                        .padding(top = 10.dp)
-                        .clip(RoundedCornerShape(15.dp))
-                        .background(Color.White),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Center
-                ) {
-                    Text(
-                        text = "Ganancias",
-                        fontSize = 15.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = Color.Gray
-                    )
-                    Text(
-                        text = "$123",
-                        fontSize = 15.sp,
-                        fontWeight = FontWeight.ExtraBold
-                    )
-                }
+                )
             }
         }
 
         //Transactions
-        Column() {
-            Row() { }
+        Column(
+            modifier = Modifier
+                .padding(15.dp)
+                .fillMaxSize()
+                .background(YellowCard)
+        ) {
+            Row(
+                modifier = Modifier
+                    .padding(5.dp)
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+            ) {
+                Text(
+                    text = "Transactions",
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.ExtraBold,
+                )
+
+                Text(
+                    text = "See All",
+                    fontSize = 15.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.Gray
+                )
+            }
 
             LazyColumn() { }
 
