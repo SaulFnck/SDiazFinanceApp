@@ -44,7 +44,9 @@ import com.example.financeapp.ui.theme.beish
 import com.example.financeapp.models.summaryCards
 import com.example.financeapp.components.SummaryCardItem
 import com.example.financeapp.components.TransactionItem
+import com.example.financeapp.components.UserItem
 import com.example.financeapp.models.transactions
+import com.example.financeapp.models.users
 import com.example.financeapp.ui.theme.YellowCard
 
 class MainActivity : ComponentActivity() {
@@ -67,65 +69,13 @@ fun FinanceApp(innerPadding: PaddingValues){
         modifier = Modifier
             .fillMaxSize()
             .padding(innerPadding)
-            .background(Color.LightGray)
+            //.background(Color.LightGray)
     ) {
 
-        //Welcome
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(15.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
-
+        //Welcome User
+        UserItem(
+            user = users[1]
         )
-        {
-            //Usuario
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-            )
-            {
-                //Icono
-                Box(
-                    modifier = Modifier
-                        .size(60.dp)
-                        .clip(CircleShape)
-                        .background(beish),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.AccountCircle,
-                        contentDescription = "Profile Picture",
-                        modifier = Modifier.size(50.dp),
-                        tint = Color.Black
-                    )
-                }
-
-                Column(
-                    modifier = Modifier
-                        .padding(start = 12.dp)
-                ) {
-                    Text(
-                        text = "Hola Saul",
-                        fontWeight = FontWeight.ExtraBold,
-                        fontSize = 24.sp
-                    )
-                    Text(
-                        text = "Bienvenido",
-                        fontSize = 15.sp,
-                        color = Color.Gray
-                    )
-                }
-            }
-
-            //Menu hamburguesa
-            Icon(
-                imageVector = Icons.Default.Menu,
-                contentDescription = "Menu",
-                modifier = Modifier.size(30.dp),
-                tint = Color.Black
-            )
-        }
 
         //SummaryCards
         Row(
@@ -174,7 +124,8 @@ fun FinanceApp(innerPadding: PaddingValues){
             modifier = Modifier
                 .padding(15.dp)
                 .fillMaxSize()
-        ) {
+        )
+        {
             Row(
                 modifier = Modifier
                     .padding(5.dp)
