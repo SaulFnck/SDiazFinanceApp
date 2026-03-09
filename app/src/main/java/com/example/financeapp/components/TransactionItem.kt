@@ -35,7 +35,7 @@ fun TransactionItem(transaction: Transaction){
 
     Row(
         modifier = Modifier
-            .padding(15.dp)
+            .padding(top = 10.dp, bottom = 10.dp)
             .fillMaxWidth()
             .height(75.dp)
             .clip(RoundedCornerShape(10.dp))
