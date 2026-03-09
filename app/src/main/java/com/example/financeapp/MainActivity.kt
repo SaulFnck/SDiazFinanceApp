@@ -19,6 +19,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -42,6 +43,8 @@ import com.example.financeapp.ui.theme.FinanceAppTheme
 import com.example.financeapp.ui.theme.beish
 import com.example.financeapp.models.summaryCards
 import com.example.financeapp.components.SummaryCardItem
+import com.example.financeapp.components.TransactionItem
+import com.example.financeapp.models.transactions
 import com.example.financeapp.ui.theme.YellowCard
 
 class MainActivity : ComponentActivity() {
@@ -98,7 +101,6 @@ fun FinanceApp(innerPadding: PaddingValues){
                     )
                 }
 
-
                 Column(
                     modifier = Modifier
                         .padding(start = 12.dp)
@@ -114,8 +116,6 @@ fun FinanceApp(innerPadding: PaddingValues){
                         color = Color.Gray
                     )
                 }
-
-
             }
 
             //Menu hamburguesa
@@ -174,7 +174,6 @@ fun FinanceApp(innerPadding: PaddingValues){
             modifier = Modifier
                 .padding(15.dp)
                 .fillMaxSize()
-                .background(YellowCard)
         ) {
             Row(
                 modifier = Modifier
@@ -196,7 +195,11 @@ fun FinanceApp(innerPadding: PaddingValues){
                 )
             }
 
-            LazyColumn() { }
+            LazyColumn() {
+                items(transactions){
+                    transaction -> TransactionItem(transaction)
+                }
+            }
 
         }
 
