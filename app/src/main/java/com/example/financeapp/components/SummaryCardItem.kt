@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -43,7 +44,7 @@ fun SummaryCardItem(cardItem: SummaryCard,modifier: Modifier = Modifier) {
                 modifier = Modifier
                     .size(25.dp)
                     .padding(bottom = 5.dp),
-                tint = Color.Black
+                tint = MaterialTheme.colorScheme.onSurface
             )
         }
 
@@ -51,14 +52,14 @@ fun SummaryCardItem(cardItem: SummaryCard,modifier: Modifier = Modifier) {
             text= cardItem.title,
             fontSize = if(cardItem.principalCard) 20.sp else 15.sp,
             fontWeight = FontWeight.Bold,
-            color = if(cardItem.principalCard) Color.Black else Color.Gray
+            color = if(cardItem.principalCard) MaterialTheme.colorScheme.onSurface else MaterialTheme.colorScheme.onSurfaceVariant
         )
 
         Text(
             text = cardItem.subtitle,
             fontSize = if(cardItem.principalCard) 15.sp else 20.sp,
             fontWeight = if(cardItem.principalCard) FontWeight.ExtraBold else FontWeight.Bold,
-            color = if(cardItem.principalCard) Color.Gray else Color.Black
+            color = if(cardItem.principalCard) MaterialTheme.colorScheme.onSurfaceVariant else MaterialTheme.colorScheme.onSurface
         )
 
     }
@@ -68,6 +69,6 @@ fun SummaryCardItem(cardItem: SummaryCard,modifier: Modifier = Modifier) {
     @Composable
     fun GreetingPreview() {
         FinanceAppTheme {
-            SummaryCardItem(summaryCards[0])
+            SummaryCardItem(summaryCards[2])
         }
     }

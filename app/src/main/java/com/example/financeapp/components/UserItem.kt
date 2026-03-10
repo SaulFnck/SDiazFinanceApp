@@ -13,6 +13,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -38,44 +39,36 @@ fun UserItem(user: User) {
             .padding(15.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
-
-    )
-    {
-        //Usuario
+    ) {
         Row(
-            verticalAlignment = Alignment.CenterVertically,
-        )
-        {
-            //Icono
+            verticalAlignment = Alignment.CenterVertically
+        ) {
             Box(
                 modifier = Modifier
                     .size(60.dp)
                     .clip(CircleShape)
-                    .background(beish),
+                    .background(MaterialTheme.colorScheme.secondaryContainer),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
                     imageVector = Icons.Default.AccountCircle,
                     contentDescription = "Profile Picture",
                     modifier = Modifier.size(50.dp),
-                    tint = Color.Black
+                    tint = MaterialTheme.colorScheme.onSurface
                 )
             }
 
-            //Texto Usuario
-            Column(
-                modifier = Modifier
-                    .padding(start = 12.dp)
-            ) {
+            Column(modifier = Modifier.padding(start = 12.dp)) {
                 Text(
                     text = "Hola ${user.name}",
                     fontWeight = FontWeight.ExtraBold,
-                    fontSize = 24.sp
+                    fontSize = 24.sp,
+                    color = MaterialTheme.colorScheme.onSurface
                 )
                 Text(
                     text = "Bienvenido",
                     fontSize = 15.sp,
-                    color = Color.Gray
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
         }
@@ -85,11 +78,10 @@ fun UserItem(user: User) {
             imageVector = Icons.Default.Menu,
             contentDescription = "Menu",
             modifier = Modifier.size(30.dp),
-            tint = Color.Black
+            tint = MaterialTheme.colorScheme.onSurface
         )
     }
 }
-
 
 @Preview(showBackground = true)
 @Composable

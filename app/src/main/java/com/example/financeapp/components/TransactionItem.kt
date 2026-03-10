@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -39,12 +40,10 @@ fun TransactionItem(transaction: Transaction){
             .fillMaxWidth()
             .height(75.dp)
             .clip(RoundedCornerShape(10.dp))
-            .background(Color.White),
+            .background(MaterialTheme.colorScheme.surface),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
-    )
-    {
-
+    ) {
         Row(
             modifier = Modifier
                 .padding(10.dp)
@@ -55,13 +54,13 @@ fun TransactionItem(transaction: Transaction){
                 modifier = Modifier
                     .size(60.dp)
                     .clip(CircleShape)
-                    .background(Color.Black),
+                    .background(MaterialTheme.colorScheme.onSurface),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
                     imageVector = transaction.icon,
                     contentDescription = null,
-                    tint = Color.White,
+                    tint = MaterialTheme.colorScheme.surface,
                     modifier = Modifier.size(40.dp)
                 )
             }
@@ -73,13 +72,13 @@ fun TransactionItem(transaction: Transaction){
                     text = transaction.Establecimiento,
                     fontWeight = FontWeight.ExtraBold,
                     fontSize = 20.sp,
-                    color = Color.Black
+                    color = MaterialTheme.colorScheme.onSurface
                 )
                 Text(
                     text = transaction.category,
                     fontWeight = FontWeight.Bold,
                     fontSize = 15.sp,
-                    color = Color.Gray
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
         }
@@ -91,24 +90,22 @@ fun TransactionItem(transaction: Transaction){
             Text(
                 text = transaction.monto,
                 fontWeight = FontWeight.Bold,
-                fontSize = 20.sp
+                fontSize = 20.sp,
+                color = MaterialTheme.colorScheme.onSurface
             )
             Text(
                 text = transaction.hora,
-                fontSize = 15.sp
+                fontSize = 15.sp,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
-
-
     }
-
-
 }
 
 @Preview(showBackground = true)
 @Composable
 fun greetingPreview() {
     FinanceAppTheme {
-        TransactionItem(transactions[3])
+        TransactionItem(transactions[7])
     }
 }
