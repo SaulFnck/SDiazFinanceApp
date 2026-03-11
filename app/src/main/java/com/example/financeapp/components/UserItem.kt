@@ -19,20 +19,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.financeapp.models.User
-import com.example.financeapp.models.summaryCards
 import com.example.financeapp.models.users
 import com.example.financeapp.ui.theme.FinanceAppTheme
-import com.example.financeapp.ui.theme.beish
 
 @Composable
 fun UserItem(user: User) {
-    //Welcome
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -40,9 +36,8 @@ fun UserItem(user: User) {
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically
-        ) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            // Icono
             Box(
                 modifier = Modifier
                     .size(60.dp)
@@ -58,22 +53,26 @@ fun UserItem(user: User) {
                 )
             }
 
+            // Textos usando Noto Serif mediante la Tipografía del Tema
             Column(modifier = Modifier.padding(start = 12.dp)) {
                 Text(
                     text = "Hola ${user.name}",
-                    fontWeight = FontWeight.ExtraBold,
-                    fontSize = 24.sp,
+                    style = MaterialTheme.typography.titleLarge.copy(
+                        fontSize = 24.sp,
+                        fontWeight = FontWeight.ExtraBold
+                    ),
                     color = MaterialTheme.colorScheme.onSurface
                 )
                 Text(
                     text = "Bienvenido",
-                    fontSize = 15.sp,
+                    style = MaterialTheme.typography.bodyLarge.copy(
+                        fontSize = 15.sp
+                    ),
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
         }
 
-        //Menu hamburguesa
         Icon(
             imageVector = Icons.Default.Menu,
             contentDescription = "Menu",
