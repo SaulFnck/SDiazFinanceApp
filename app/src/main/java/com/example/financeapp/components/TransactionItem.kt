@@ -71,13 +71,13 @@ fun TransactionItem(transaction: Transaction){
                 Text(
                     text = transaction.Establecimiento,
                     fontWeight = FontWeight.ExtraBold,
-                    fontSize = 20.sp,
+                    fontSize = 18.sp,
                     color = MaterialTheme.colorScheme.onSurface
                 )
                 Text(
                     text = transaction.category,
                     fontWeight = FontWeight.Bold,
-                    fontSize = 15.sp,
+                    fontSize = 13.sp,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
@@ -90,12 +90,12 @@ fun TransactionItem(transaction: Transaction){
             Text(
                 text = transaction.monto,
                 fontWeight = FontWeight.Bold,
-                fontSize = 20.sp,
+                fontSize = 18.sp,
                 color = MaterialTheme.colorScheme.onSurface
             )
             Text(
                 text = transaction.hora,
-                fontSize = 15.sp,
+                fontSize = 13.sp,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
@@ -106,6 +106,6 @@ fun TransactionItem(transaction: Transaction){
 @Composable
 fun greetingPreview() {
     FinanceAppTheme {
-        TransactionItem(transactions[7])
+        TransactionItem(transactions[2])
     }
 }
